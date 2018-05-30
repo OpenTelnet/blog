@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            hexo的扩展(评论，github page等)/development for hexo(comment, github page and etc.) | 
+        
+        OpenTelnet
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="This is my homepage.">
+    <meta name="keywords" content=",hexo blog comment server github page own">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="OpenTelnet">
+    <meta name="msapplication-starturl" content="http://opentelnet.github.io/2018/05/23/hexo-extend/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="OpenTelnet">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://opentelnet.github.io/2018/05/23/hexo-extend/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="hexo的扩展(评论，github page等)/development for hexo(comment, github page and etc.) | OpenTelnet">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="This is my homepage.">
+    <meta property="og:article:tag" content="hexo blog comment server github page own"> 
+
+    
+        <meta property="article:published_time" content="Wed May 23 2018 14:16:38 GMT+0800">
+        <meta property="article:modified_time" content="Wed May 23 2018 16:29:28 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://opentelnet.github.io/2018/05/23/hexo-extend/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://opentelnet.github.io/2018/05/23/hexo-extend/index.html",
+    "headline": "hexo的扩展(评论，github page等)/development for hexo(comment, github page and etc.)",
+    "datePublished": "Wed May 23 2018 14:16:38 GMT+0800",
+    "dateModified": "Wed May 23 2018 16:29:28 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "opentelnet@gmail.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "<a href='https://www.google.com'>广告招租/Advistring lease</a>"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "OpenTelnet",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",hexo blog comment server github page own",
+    "description": "This is my homepage.",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+        <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-119673845-1', 'auto');ga('send', 'pageview');
+</script>
+    
+    
+        <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?a1a96b8dea2d211cdd9ec99def25bb1f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更换主题"><span class="post-toc-number">1.</span> <span class="post-toc-text">更换主题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Github-Page"><span class="post-toc-number">2.</span> <span class="post-toc-text">Github Page</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建你的仓库"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">创建你的仓库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#生成静态网页hexo-g"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">生成静态网页hexo g</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#域名解析"><span class="post-toc-number">3.</span> <span class="post-toc-text">域名解析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#域名管理页面"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">域名管理页面</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#github设置"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">github设置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Gitment"><span class="post-toc-number">4.</span> <span class="post-toc-text">Gitment</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Change-a-theme"><span class="post-toc-number">5.</span> <span class="post-toc-text">Change a theme</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Github-Page-1"><span class="post-toc-number">6.</span> <span class="post-toc-text">Github Page</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Create-your-own-repo"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">Create your own repo</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#generate-static-pages-hexo-g"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">generate static pages-hexo g</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Upload-your-website-hexo-d"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">Upload your website-hexo d</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DNS"><span class="post-toc-number">7.</span> <span class="post-toc-text">DNS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Domain-Name-Service-Provider"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">Domain Name Service Provider</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Github-Setting"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">Github Setting</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Gitment-1"><span class="post-toc-number">8.</span> <span class="post-toc-text">Gitment</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                hexo的扩展(评论，github page等)/development for hexo(comment, github page and etc.)
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>opentelnet@gmail.com</strong>
+        <span>5月 23, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/hexo-blog-comment-server-github-page-own/">hexo blog comment server github page own</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=hexo的扩展(评论，github page等)/development for hexo(comment, github page and etc.)&url=http://opentelnet.github.io/2018/05/23/hexo-extend/index.html&pic=http://opentelnet.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=hexo的扩展(评论，github page等)/development for hexo(comment, github page and etc.)&url=http://opentelnet.github.io/2018/05/23/hexo-extend/index.html&via=opentelnet@gmail.com" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://opentelnet.github.io/2018/05/23/hexo-extend/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://opentelnet.github.io/2018/05/23/hexo-extend/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://opentelnet.github.io/2018/05/23/hexo-extend/index.html&title=hexo的扩展(评论，github page等)/development for hexo(comment, github page and etc.)" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=OpenTelnet&title=hexo的扩展(评论，github page等)/development for hexo(comment, github page and etc.)&summary=This is my homepage.&pics=http://opentelnet.github.io/img/favicon.png&url=http://opentelnet.github.io/2018/05/23/hexo-extend/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://opentelnet.github.io/2018/05/23/hexo-extend/index.html&text=hexo的扩展(评论，github page等)/development for hexo(comment, github page and etc.)" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote><p>上次讲述了hexo的本地搭建过程，这一次来讲述如何用hexo生成真正的大家可以访问的博客吧。</p>
+</blockquote>
+<h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>默认的主题是landscape，可以看到很简洁，如果你只是想自己写文章而不在乎谁看到，那么恭喜你够用了。不过大部分时候，我们并不满意它，也并不是那么好看。我们可以看到<a href="https://hexo.io/themes/" target="_blank" rel="noopener">官网</a>拥有207个主题(截止到2018/5/23)。这么多主题会让你挑很久，然而很遗憾的告诉你，并不是每个主题都能直接使用的。具体的你需要去该主题的github页面看别人的讨论，而且有些主题是远古时代的产物，作者可能放弃更新了。更换主题是一件十分容易的事情，仅需要下面几步。<br>下载主题，我就用我的主题来举一个例子，在你博客的目录下git项目到你的themes文件夹下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/viosey/hexo-theme-material.git themes/material</span><br></pre></td></tr></table></figure><br>接下来编辑_config.yml，将其中的“theme: landscape”换成“theme: material”。这是hexo更换主题的通用步骤，不过我们的material主题作者有一些谨慎，我们下载的themes/material下有一个文件名为_config.template.yml，我们需要把它名字改成_config.yml，记住，这是hexo的配置文件，名字都是这样的，抓住事情的本质一切就会豁然开朗。接下来终端执行“hexo s”即可看到我们的主题更换成功了。</p>
+<h3 id="Github-Page"><a href="#Github-Page" class="headerlink" title="Github Page"></a>Github Page</h3><blockquote><p>Github是我们知道著名的代码托管网站，然而本教程并不需要你去写代码。之所以用到它是因为Github Page可以支持预览静态网页，你想想，你做个人博客不就是为了给别人看吗？只要你想要的界面出来了，你还用得着买服务器吗？</p>
+</blockquote>
+<h4 id="创建你的仓库"><a href="#创建你的仓库" class="headerlink" title="创建你的仓库"></a>创建你的仓库</h4><p>第一步，注册一个github账号，这个还用我教的话，面壁去。<br>然后新建一个仓库，点击右上角+，点击New repository。<br>Repository name里写上格式如“你的用户名.github.io”，像我的仓库名就叫做opentelnet.github.io<br>接下来创建仓库，点击绿色的Create repository。</p>
+<h4 id="生成静态网页hexo-g"><a href="#生成静态网页hexo-g" class="headerlink" title="生成静态网页hexo g"></a>生成静态网页hexo g</h4><p>hexo g用来生产静态网页，保存在public文件夹下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\你的用户名\博客文件夹名\hexo g</span><br></pre></td></tr></table></figure></p>
+<p>####上传到网页到仓库里hexo d<br>前文说过，你可以在github网页上将文件上传到仓库里，会比较麻烦。如果你会设置了git这是十分方便的。<br>在博客根目录下右键空白处选择Git Bash here，接下来执行下列操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &apos;仓库名&apos;</span><br><span class="line">git config --global user.email &apos;邮箱名&apos;</span><br><span class="line">ssh-keygen -t rsa -C &quot;邮箱名&quot;</span><br></pre></td></tr></table></figure><br>输入完上一条命令后会生成一条rsa密码，如我的就生成在C:\Users\用户名.ssh\id_rsa.pub文件里，用sublime之类的软件打开它，全部复制，然后打开github.com，点击settting，找到SSH and GPG keys一项，点击New SSH keys，TiTle随便输入，Key就黏贴我们刚刚输入的部分。<br>在终端输入命令hexo d，网页更新完成。输入你的仓库名，如opentelnet.github.io即可访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\你的用户名\博客文件夹名\hexo d</span><br></pre></td></tr></table></figure></p>
+<h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><h4 id="域名管理页面"><a href="#域名管理页面" class="headerlink" title="域名管理页面"></a>域名管理页面</h4><p>添加一个CNAME记录，记录值为www，域名是自己购买的域名。</p>
+<h4 id="github设置"><a href="#github设置" class="headerlink" title="github设置"></a>github设置</h4><p>打开你的仓库页面，点击仓库的setting，找到新页面里有一项github page，找到custom domain，填写你的域名，如<a href="http://www.opentelnet.com" target="_blank" rel="noopener">www.opentelnet.com</a> ，点击save保存。</p>
+<h3 id="Gitment"><a href="#Gitment" class="headerlink" title="Gitment"></a>Gitment</h3><blockquote><p>Gitment是基于仓库存储文章的评论，实际上与数据库无关，而是存在你的仓库里。</p>
+</blockquote>
+<p>一般情况下，你的主题像我的就是themes/material下的_config.yml文件里有配置文件，ctrl+f找到comment，修改其中的几行，我把我的设置给你们看。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">comment:</span><br><span class="line">    use: gitment</span><br><span class="line">    ......</span><br><span class="line">    gitment_repo:   opentelnet.github.io # git repo of the hexo</span><br><span class="line">    gitment_owner:  OpenTelnet # git repo&apos;s owner</span><br><span class="line">    gitment_client_id:  xxxxxxxxxxxxxxxxxxx # github app client id </span><br><span class="line">    gitment_client_secret :  xxxxxxxxxxxxxxxxxxxxxxx # github app client secret </span><br><span class="line">    ......</span><br></pre></td></tr></table></figure><br>use后要加gitment，gitment_repo写上自己的仓库名称，gitment_owner就是自己的github用户名，gitment_client_id和gitment_client_secret需要自己去获取。<br>右上角点自己头像展开，点击setting，在弹出的网页中选中侧边的developer setting，接下来是OAuth Apps，点击右边的New OAuth App。<br>Application name：随便输入<br>Hompage URL:你的域名格式如<a href="https://www.opentelnet.com" target="_blank" rel="noopener">https://www.opentelnet.com</a><br>Application description:随便输入<br>Authorization callback URL:你的域名格式如<a href="https://www.opentelnet.com" target="_blank" rel="noopener">https://www.opentelnet.com</a><br>接下来点击绿色的Register application。好了，获取到了你的client id和client secret，把它们更改到配置文件里。</p>
+<ul>
+<li>顺带一提，你创建文件的时候就是hexo new 文章名，这个文章名千万别使用中文，这个名字是地址栏会显示的名字，而且最好别超过50个字符，中文名字你可以打开md文件给title起中文名那是没关系的。<br><a href="/images/alipay.png">赞赏本文(使用支付宝转账)</a><br><hr><blockquote><p>We talked about local establishment of hexo on local computer. Let’s make a blog website ready for everyone to visit now!</p>
+</blockquote>
+<h3 id="Change-a-theme"><a href="#Change-a-theme" class="headerlink" title="Change a theme"></a>Change a theme</h3>Hexo use the theme ‘Landscape’ as default. If you only write pages regardless of who can see it, it’s just ok. However, we don’t feel satisfy with it because it’s not good for us. We can see 207 themes(by 2018/5/23) on<a href="https://hexo.io/themes/" target="_blank" rel="noopener">official website</a>. There’s so many themes that we could cost much time to choose which one to get. Aha, I will tell you that some of them isn’t on function. You should see the discuss on their github even a few themes stop to update. It’s really simple for us to change a theme just follow my steps.<br>Firstly, download your favourite theme and clone it to the floder named themes. I will take my example that I choose the theme material.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/viosey/hexo-theme-material.git themes/material</span><br></pre></td></tr></table></figure>
+Edit _config.yml:[theme: landscape] –&gt; [theme:material]<br>That’s a common step when you want to change your theme. However, the theme material is special. We should modify themes/material/_config.template.yml as themes/material/_config.yml.<br>Execute [hexo s] and you can visit <a href="http://127.0.0.1:4000" target="_blank" rel="noopener">http://127.0.0.1:4000</a> to look it.<h3 id="Github-Page-1"><a href="#Github-Page-1" class="headerlink" title="Github Page"></a>Github Page</h3><blockquote><p>As we known, github is a code hosting site but we do not need to code. We use it just for store out website for free. OMG, we can save lots of money per year.</p>
+</blockquote>
+<h4 id="Create-your-own-repo"><a href="#Create-your-own-repo" class="headerlink" title="Create your own repo"></a>Create your own repo</h4>Firstly, please register a github account.<br>Then create a repo. Click the [+] on the top and click [New repository].<br>Repository name: e.g.’opentelnet.github.io’.<br>Click the green button [Create repository].<h4 id="generate-static-pages-hexo-g"><a href="#generate-static-pages-hexo-g" class="headerlink" title="generate static pages-hexo g"></a>generate static pages-hexo g</h4>You can execute [hexo g] to generate static pages and they saved in a floder named public.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\username\blogFloder\hexo g</span><br></pre></td></tr></table></figure>
+<h4 id="Upload-your-website-hexo-d"><a href="#Upload-your-website-hexo-d" class="headerlink" title="Upload your website-hexo d"></a>Upload your website-hexo d</h4>Let’s talk about git next.<br>Right click [Git Bash here] on the blank in the floder which your blog here.<br>Follow the next steps:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &apos;Repo Name&apos;</span><br><span class="line">git config --global user.email &apos;Email Name&apos;</span><br><span class="line">ssh-keygen -t rsa -C &quot;Email Name&quot;</span><br></pre></td></tr></table></figure>
+We will get a rsa password in the file [C:\Users\username.ssh\id_rsa.pub]<br>Open and copy full of it.<br>Visit github.com.<br>Click setting and look for [SSH and GPG keys], then new it.<br>TiTle: with your pleasure.<br>Key： paste what we copied just now<br>Execute [hexo d] to upload your website to your github repo.<br>Visit your blog by typing your repo name such as [opentelnet.github.io].<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\username\blogFloder\hexo d</span><br></pre></td></tr></table></figure>
+<h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><h4 id="Domain-Name-Service-Provider"><a href="#Domain-Name-Service-Provider" class="headerlink" title="Domain Name Service Provider"></a>Domain Name Service Provider</h4>Add a CNAME record www.<h4 id="Github-Setting"><a href="#Github-Setting" class="headerlink" title="Github Setting"></a>Github Setting</h4>Open your repo setting and find [github page], then write your domain after [custom domain].<br>Click the save button.<h3 id="Gitment-1"><a href="#Gitment-1" class="headerlink" title="Gitment"></a>Gitment</h3><blockquote><p>Gitment is a comment system which stores comments in your repo.</p>
+</blockquote>
+Open themes/material/_config.yml.<br>Ctrl + f to find [comment].<br>Modify the following rows:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">comment:</span><br><span class="line">    use: gitment</span><br><span class="line">    ......</span><br><span class="line">    gitment_repo:   opentelnet.github.io # git repo of the hexo</span><br><span class="line">    gitment_owner:  OpenTelnet # git repo&apos;s owner</span><br><span class="line">    gitment_client_id:  xxxxxxxxxxxxxxxxxxx # github app client id </span><br><span class="line">    gitment_client_secret :  xxxxxxxxxxxxxxxxxxxxxxx # github app client secret </span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
+Add [gitment] after [use].<br>Add your Respo Name after [gitment_repo].<br>Add your github username after [gitment_owner].<br>You need to get your own gitment client id and secret by the following steps.<br>Click your headings and then click setting.<br>Select [developer setting] on the side bar.<br>Then, click the [OAuth Appas] and new it. Here’s the example:<br>Application name： with your pleasure<br>Hompage URL: e.g.<a href="https://www.opentelnet.com" target="_blank" rel="noopener">https://www.opentelnet.com</a><br>Application description: with your pleasure<br>Authorization callback URL: e.g.<a href="https://www.opentelnet.com" target="_blank" rel="noopener">https://www.opentelnet.com</a><br>Next, click the green button [Register application]. Okay, just put your client id and client secret to _config.yml</li>
+<li>By the way, just use Enlish when you create your article and the length of title is supposed to be less than 50 characters. Otherwise, gitment will go down.<br><a href="/images/alipay.png">Sponsor(AliPay)</a></li>
+</ul>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        owner: 'OpenTelnet',
+        repo: 'opentelnet.github.io',
+        oauth: {
+            client_id: '307801f7e502ea1d4915',
+            client_secret: 'c1670bd55fdfa4dc48b8bff55c897e5de7ef8474',
+        },
+    })
+    gitment.render('container')
+</script>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/05/24/docker/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/05/23/hexo-init/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="opentelnet@gmail.com's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        opentelnet@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:opentelnet@gmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">6</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Linux/">Linux<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">hexo<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/movie" title="电影">
+                
+                    <i class="material-icons sidebar-material-icons">movie</i>
+                
+                电影
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/music" title="音乐">
+                
+                    <i class="material-icons sidebar-material-icons">music_note</i>
+                
+                音乐
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/favorites" title="收藏夹">
+                
+                    <i class="material-icons sidebar-material-icons">favorite</i>
+                
+                收藏夹
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">6</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/open_telnet" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+        <a href="https://plus.google.com/114951775686359310545" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/u/6425638114?refer_flag=1001030101_" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/OpenTelnet" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>OpenTelnet
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?wgjW/HuQG9JDgvPDPoRAng==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- Gitment -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

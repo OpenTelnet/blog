@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            OpenLDAP的安装/install openldap | 
+        
+        OpenTelnet
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="This is my homepage.">
+    <meta name="keywords" content=",linux ldap openldap">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="OpenTelnet">
+    <meta name="msapplication-starturl" content="http://opentelnet.github.io/2018/05/28/linux-ldap/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="OpenTelnet">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://opentelnet.github.io/2018/05/28/linux-ldap/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="OpenLDAP的安装/install openldap | OpenTelnet">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="This is my homepage.">
+    <meta property="og:article:tag" content="linux ldap openldap"> 
+
+    
+        <meta property="article:published_time" content="Mon May 28 2018 16:49:53 GMT+0800">
+        <meta property="article:modified_time" content="Wed May 30 2018 10:03:14 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://opentelnet.github.io/2018/05/28/linux-ldap/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://opentelnet.github.io/2018/05/28/linux-ldap/index.html",
+    "headline": "OpenLDAP的安装/install openldap",
+    "datePublished": "Mon May 28 2018 16:49:53 GMT+0800",
+    "dateModified": "Wed May 30 2018 10:03:14 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "opentelnet@gmail.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "<a href='https://www.google.com'>广告招租/Advistring lease</a>"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "OpenTelnet",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",linux ldap openldap",
+    "description": "This is my homepage.",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+        <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-119673845-1', 'auto');ga('send', 'pageview');
+</script>
+    
+    
+        <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?a1a96b8dea2d211cdd9ec99def25bb1f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事前准备"><span class="post-toc-number">1.</span> <span class="post-toc-text">事前准备</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装LDAP必须的包"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装LDAP必须的包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建LDAP的管理密码"><span class="post-toc-number">3.</span> <span class="post-toc-text">创建LDAP的管理密码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对LDAP服务器的配置"><span class="post-toc-number">4.</span> <span class="post-toc-text">对LDAP服务器的配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提供监测权限"><span class="post-toc-number">5.</span> <span class="post-toc-text">提供监测权限</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开启服务"><span class="post-toc-number">6.</span> <span class="post-toc-text">开启服务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置LDAP数据"><span class="post-toc-number">7.</span> <span class="post-toc-text">配置LDAP数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建认证"><span class="post-toc-number">8.</span> <span class="post-toc-text">创建认证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建基本的自签名认证"><span class="post-toc-number">9.</span> <span class="post-toc-text">创建基本的自签名认证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为自己的域生成配置文件"><span class="post-toc-number">10.</span> <span class="post-toc-text">为自己的域生成配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建本地用户"><span class="post-toc-number">11.</span> <span class="post-toc-text">创建本地用户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#把用户导入LDAP数据库"><span class="post-toc-number">12.</span> <span class="post-toc-text">把用户导入LDAP数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#测试"><span class="post-toc-number">13.</span> <span class="post-toc-text">测试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Preparation"><span class="post-toc-number">14.</span> <span class="post-toc-text">Preparation</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Install-the-required-LDAP-Packages-“Openldap”"><span class="post-toc-number">15.</span> <span class="post-toc-text">Install the required LDAP Packages “Openldap”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-LDAP-root-passwd-for-administration-purpose"><span class="post-toc-number">16.</span> <span class="post-toc-text">Create a LDAP root passwd for administration purpose</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Edit-the-OpenLDAP-Server-Configuration"><span class="post-toc-number">17.</span> <span class="post-toc-text">Edit the OpenLDAP Server Configuration</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Provide-the-Monitor-privileges"><span class="post-toc-number">18.</span> <span class="post-toc-text">Provide the Monitor privileges</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Enable-and-Start-the-SLAPD-service"><span class="post-toc-number">19.</span> <span class="post-toc-text">Enable and Start the SLAPD service</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Configure-the-LDAP-Database"><span class="post-toc-number">20.</span> <span class="post-toc-text">Configure the LDAP Database</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-the-self-signed-certificate"><span class="post-toc-number">21.</span> <span class="post-toc-text">Create the self-signed certificate</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-base-objects-in-OpenLDAP"><span class="post-toc-number">22.</span> <span class="post-toc-text">Create base objects in OpenLDAP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-a-base-ldif-file-for-your-Domain"><span class="post-toc-number">23.</span> <span class="post-toc-text">Generate a base.ldif file for your Domain</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-Local-Users"><span class="post-toc-number">24.</span> <span class="post-toc-text">Create a Local Users</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Import-Users-in-to-the-LDAP-Database"><span class="post-toc-number">25.</span> <span class="post-toc-text">Import Users in to the LDAP Database</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Test-the-configuration"><span class="post-toc-number">26.</span> <span class="post-toc-text">Test the configuration</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                OpenLDAP的安装/install openldap
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>opentelnet@gmail.com</strong>
+        <span>5月 28, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/linux-ldap-openldap/">linux ldap openldap</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=OpenLDAP的安装/install openldap&url=http://opentelnet.github.io/2018/05/28/linux-ldap/index.html&pic=http://opentelnet.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=OpenLDAP的安装/install openldap&url=http://opentelnet.github.io/2018/05/28/linux-ldap/index.html&via=opentelnet@gmail.com" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://opentelnet.github.io/2018/05/28/linux-ldap/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://opentelnet.github.io/2018/05/28/linux-ldap/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://opentelnet.github.io/2018/05/28/linux-ldap/index.html&title=OpenLDAP的安装/install openldap" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=OpenTelnet&title=OpenLDAP的安装/install openldap&summary=This is my homepage.&pics=http://opentelnet.github.io/img/favicon.png&url=http://opentelnet.github.io/2018/05/28/linux-ldap/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://opentelnet.github.io/2018/05/28/linux-ldap/index.html&text=OpenLDAP的安装/install openldap" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote><p><a href="https://zh.wikipedia.org/wiki/%E8%BD%BB%E5%9E%8B%E7%9B%AE%E5%BD%95%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">LDAP</a>全称是Lightweight Directory Access Protocol目录访问协议，被称之为Linux下的AD域，它用树状的目录结构来存储数据，具有层级结构，一般用于公司员工信息存储，查询十分迅速。<br>本文将对于OpenLDAP服务器端的安装就行，由于篇幅限制，客户端的安装将在下一篇，写本文也是鉴于国内大部分教程都比较水，国外的又有很多不能运行，我踩了很多坑才完成这篇文章的。<br><a href="https://www.youtube.com/watch?v=42tFcFFkk-w" target="_blank" rel="noopener">参考:OpenLDAP Server Configuration on RHEL 7 / CentOS 7 - 100% Working Step by Step Procedure(我国大陆地区无法访问)</a>。</p>
+</blockquote>
+<h3 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h3><ol>
+<li>一台CentOS 7，当然你也可以是6.9，如果你是6.5之前的版本，本教程可能不适用。</li>
+<li>关闭CentOS 7的防火墙，当然你也可以设置允许的规则。7的使用[systemctl stop firewalld]，6.9则是[service iptables stop]。<h3 id="安装LDAP必须的包"><a href="#安装LDAP必须的包" class="headerlink" title="安装LDAP必须的包"></a>安装LDAP必须的包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install &quot;openldap&quot; openldap-servers openldap-servers-sql openldap-devel migrationtools</span><br></pre></td></tr></table></figure>
+<h3 id="创建LDAP的管理密码"><a href="#创建LDAP的管理密码" class="headerlink" title="创建LDAP的管理密码"></a>创建LDAP的管理密码</h3>输入管理密码，这里会生成{SSHA}开头的加密密码，记得复制。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slappasswd</span><br><span class="line">New password:</span><br><span class="line">Re-enter new password:</span><br></pre></td></tr></table></figure>
+<h3 id="对LDAP服务器的配置"><a href="#对LDAP服务器的配置" class="headerlink" title="对LDAP服务器的配置"></a>对LDAP服务器的配置</h3>对于CentOS 6.5及之前的用户来说配置文件应该是[/etc/openldap/slapd.conf]，6.9及以后的配置都在[/etc/openldap/slapd.d/cn=config]里。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/openldap/slapd.d/cn=config</span><br><span class="line">vi olcDatabase=&#123;2&#125;hbd.ldif</span><br></pre></td></tr></table></figure>
+修改olcDatabase={2}hbd.ldif配置文件：</li>
+<li>olcSuffix<br>dc=my-domain,dc=com –&gt; dc=opentelnet,dc=com</li>
+<li>olcRootDN<br>cn=Manager,dc=my-domain,dc=com –&gt; cn=Manager,dc=opentelnet,dc=com</li>
+<li>添加密码认证，最下方添加一行,后面的密码是前文中提醒你复制的<br>olcRootPW: {SSHA}b1YGPJhWPwE00Wk7yFx0DSCrt5OH1erT</li>
+<li>证书认证，继续再最下方添加两行(PS:按照教程是这顺序，可是实际操作中先输入这两行会让服务无法启动，我们可以先用#注释掉，过会儿生成这两个证书后再取消注释)，wq保存<br>olcTLSCertificateFile: /etc/pki/tls/certs/opentelnetldap.pem<br>olcTLSCertificateKeyFile: /etc/pki/tls/certs/opentelnetldapkey.pem<h3 id="提供监测权限"><a href="#提供监测权限" class="headerlink" title="提供监测权限"></a>提供监测权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi olcDatabase=&#123;1&#125;monitor.ldif</span><br></pre></td></tr></table></figure>
+修改olcDatabase={1}monitor.ldif配置文件：</li>
+<li>olcAccess<br>dc=my-domain –&gt; dc=opentelnet<br>测试运行，如果有succeeded字样代表成功<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slaptest -u</span><br></pre></td></tr></table></figure>
+<h3 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start slapd</span><br><span class="line">systemctl enable slapd</span><br></pre></td></tr></table></figure>
+如果你是CentOS 6.9，则换为如下操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service slapd start</span><br><span class="line">chkconfig slapd on</span><br></pre></td></tr></table></figure>
+<h3 id="配置LDAP数据"><a href="#配置LDAP数据" class="headerlink" title="配置LDAP数据"></a>配置LDAP数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp -rf /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG</span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif</span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif</span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif</span><br></pre></td></tr></table></figure>
+以上每一步操作的成功提示都类似于<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SASL/EXTERNAL authentication started</span><br><span class="line">SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth</span><br><span class="line">SASL SSF: 0</span><br><span class="line">adding new entry &quot;cn=inetorgperson,cn=schema,cn=config&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="创建认证"><a href="#创建认证" class="headerlink" title="创建认证"></a>创建认证</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -nodes -out /etc/pki/tls/certs/opentelnetldap.pem -keyout /etc/pki/tls/certs/opentelnetldapkey.pem -days 365</span><br></pre></td></tr></table></figure>
+好了，接下来会有问答卷等你填，以下是范例，你可以自己按照自己的填<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Country Name (2 letter code) [XX]:CN</span><br><span class="line">State or Province Name (full name) []:ZheJiang</span><br><span class="line">Locality Name (eg, city) [Default City]: HangZhou</span><br><span class="line">Organization Name (eg, company) [Default Company Ltd]:OpenTelnet</span><br><span class="line">Organization Unit Name (eg,section) []:Manage</span><br><span class="line">Common Name (eg, your name or your server&apos;s hostname) []:opentelnet.com</span><br><span class="line">Email Address []:opentelnet@gmail.com</span><br></pre></td></tr></table></figure>
+<h3 id="创建基本的自签名认证"><a href="#创建基本的自签名认证" class="headerlink" title="创建基本的自签名认证"></a>创建基本的自签名认证</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/share/migrationtools</span><br><span class="line">vi migrate_common.ph</span><br></pre></td></tr></table></figure>
+修改migrate_common.ph:</li>
+<li>输入:71转到第71行<br>$DEFAULT_MAIL_DOMAIN = “padl.com” –&gt; $DEFAULT_MAIL_DOMAIN = “opentelnet.com”</li>
+<li>下面一部分(74行)<br>$DEFAULT_BASE = “dc=padl,dc=com” –&gt; $DEFAULT_BASE = “dc=opentelnet,dc=com”</li>
+<li>转到90行<br>$EXTENDED_SCHEMA = 0; –&gt; $EXTENDED_SCHEMA = 1;<h3 id="为自己的域生成配置文件"><a href="#为自己的域生成配置文件" class="headerlink" title="为自己的域生成配置文件"></a>为自己的域生成配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /root/base.ldif</span><br></pre></td></tr></table></figure>
+修改base.ldif配置文件，内容如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">dn: dc=opentelnet,dc=com</span><br><span class="line">objectCLass: top</span><br><span class="line">objectClass: dcObject</span><br><span class="line">objectClass: organization</span><br><span class="line">o: opentelnet com</span><br><span class="line">dc: opentelnet</span><br><span class="line"></span><br><span class="line">dn: cn=Manager,dc=opentelnet,dc=com</span><br><span class="line">objectClass: organizationalRole</span><br><span class="line">cn: Manager</span><br><span class="line">description: Directory Manager</span><br><span class="line"></span><br><span class="line">dn: ou=People,dc=opentelnet,dc=com</span><br><span class="line">objectClass: organizationalUnit</span><br><span class="line">ou: People</span><br><span class="line"></span><br><span class="line">dn: ou=Group,dc=opentelnet,dc=com</span><br><span class="line">objectClass: organizationalUnit</span><br><span class="line">ou: Group</span><br></pre></td></tr></table></figure>
+<h3 id="创建本地用户"><a href="#创建本地用户" class="headerlink" title="创建本地用户"></a>创建本地用户</h3>添加user1，user2用户<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd user1</span><br><span class="line">useradd user2</span><br></pre></td></tr></table></figure>
+为他们设置密码，有需要输入的部分，自己填写记得住的密码即可<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">passwd user1</span><br><span class="line">passwd user2</span><br></pre></td></tr></table></figure>
+<h3 id="把用户导入LDAP数据库"><a href="#把用户导入LDAP数据库" class="headerlink" title="把用户导入LDAP数据库"></a>把用户导入LDAP数据库</h3>把刚创建的用户和组导入到文件里<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;:10[0-9][0-9]&quot; /etc/passwd &gt; /root/passwd</span><br><span class="line">grep &quot;:10[0-9][0-9]&quot; /etc/group &gt; /root/group</span><br></pre></td></tr></table></figure>
+使用工具生成配置文件(当前目录为/usr/share/migrationtools)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./migrate_passwd.pl /root/passwd /root/users.ldif</span><br><span class="line">./migrate_passwd.pl /root/group /root/groups.ldif</span><br></pre></td></tr></table></figure>
+添加LDAP分组,执行第一行之后要输入LDAP密码，和你开始设置的一样，加密前的密码。下面的则是输出结果<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ldapadd -x -W -D &quot;cn=Manager,dc=opentelnet,dc=com&quot; -f /root/base.ldif</span><br><span class="line">Enter LDAP Password:</span><br><span class="line">adding new entry &quot;dc=opentelnet,dc=com&quot;</span><br><span class="line">adding new entry &quot;cn=Manager,dc=opentelnet,dc=com&quot;</span><br><span class="line">adding new entry &quot;cn=People,dc=opentelnet,dc=com&quot;</span><br><span class="line">adding new entry &quot;cn=Group,dc=opentelnet,dc=com&quot;</span><br></pre></td></tr></table></figure>
+为LDAP添加用户，执行这两行会有如上类似的输出结果<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ldapadd -x -W -D &quot;cn=Manager,dc=opentelnet,dc=com&quot; -f /root/users.ldif</span><br><span class="line">ldapadd -x -W -D &quot;cn=Manager,dc=opentelnet,dc=com&quot; -f /root/groups.ldif</span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3>查找user1是否被添加进去，user2同理<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ldapsearch -x cn=user1 -b dc=opentelnet,dc=com</span><br></pre></td></tr></table></figure>
+<hr><blockquote><p><a href="https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol" target="_blank" rel="noopener">LDAP</a>(Lightweight Directory Access Protocol)<br>Reference:<a href="https://www.youtube.com/watch?v=42tFcFFkk-w" target="_blank" rel="noopener">OpenLDAP Server Configuration on RHEL 7 / CentOS 7 - 100% Working Step by Step Procedure</a>。</p>
+</blockquote>
+<h3 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h3></li>
+<li>A machine with CentOS 7.</li>
+<li>Close your firewall by [systemctl stop firewalld]. CentOS 6.9 use [service iptables stop].<h3 id="Install-the-required-LDAP-Packages-“Openldap”"><a href="#Install-the-required-LDAP-Packages-“Openldap”" class="headerlink" title="Install the required LDAP Packages “Openldap”"></a>Install the required LDAP Packages “Openldap”</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install &quot;openldap&quot; openldap-servers openldap-servers-sql openldap-devel migrationtools</span><br></pre></td></tr></table></figure>
+<h3 id="Create-a-LDAP-root-passwd-for-administration-purpose"><a href="#Create-a-LDAP-root-passwd-for-administration-purpose" class="headerlink" title="Create a LDAP root passwd for administration purpose"></a>Create a LDAP root passwd for administration purpose</h3>Generate admin password, please keep it and we’ll use later.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slappasswd</span><br><span class="line">New password:</span><br><span class="line">Re-enter new password:</span><br></pre></td></tr></table></figure>
+<h3 id="Edit-the-OpenLDAP-Server-Configuration"><a href="#Edit-the-OpenLDAP-Server-Configuration" class="headerlink" title="Edit the OpenLDAP Server Configuration"></a>Edit the OpenLDAP Server Configuration</h3>OpenLDAP’s config file is [/etc/openldap/slapd.conf] in CentOS 6.5 and before. CentOS 6.9 is [/etc/openldap/slapd.d/cn=config].<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/openldap/slapd.d/cn=config</span><br><span class="line">vi olcDatabase=&#123;2&#125;hbd.ldif</span><br></pre></td></tr></table></figure>
+Modify olcDatabase={2}hbd.ldif:</li>
+<li>olcSuffix<br>dc=my-domain,dc=com –&gt; dc=opentelnet,dc=com</li>
+<li>olcRootDN<br>cn=Manager,dc=my-domain,dc=com –&gt; cn=Manager,dc=opentelnet,dc=com</li>
+<li>Add password auth. Add the following content at the bottom:<br>olcRootPW: {SSHA}b1YGPJhWPwE00Wk7yFx0DSCrt5OH1erT</li>
+<li>Add cert auth. Also at the bottom<br>olcTLSCertificateFile: /etc/pki/tls/certs/opentelnetldap.pem<br>olcTLSCertificateKeyFile: /etc/pki/tls/certs/opentelnetldapkey.pem<h3 id="Provide-the-Monitor-privileges"><a href="#Provide-the-Monitor-privileges" class="headerlink" title="Provide the Monitor privileges"></a>Provide the Monitor privileges</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi olcDatabase=&#123;1&#125;monitor.ldif</span><br></pre></td></tr></table></figure>
+Modify olcDatabase={1}monitor.ldif：</li>
+<li>olcAccess<br>dc=my-domain –&gt; dc=opentelnet<br>Test and if contains ‘succeeded’ you can go on.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slaptest -u</span><br></pre></td></tr></table></figure>
+<h3 id="Enable-and-Start-the-SLAPD-service"><a href="#Enable-and-Start-the-SLAPD-service" class="headerlink" title="Enable and Start the SLAPD service"></a>Enable and Start the SLAPD service</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start slapd</span><br><span class="line">systemctl enable slapd</span><br></pre></td></tr></table></figure>
+When in CentOS 6.9, you can change to the following steps:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service slapd start</span><br><span class="line">chkconfig slapd on</span><br></pre></td></tr></table></figure>
+<h3 id="Configure-the-LDAP-Database"><a href="#Configure-the-LDAP-Database" class="headerlink" title="Configure the LDAP Database"></a>Configure the LDAP Database</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp -rf /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG</span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif</span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif</span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif</span><br></pre></td></tr></table></figure>
+Succeed if screen prints contents like below:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SASL/EXTERNAL authentication started</span><br><span class="line">SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth</span><br><span class="line">SASL SSF: 0</span><br><span class="line">adding new entry &quot;cn=inetorgperson,cn=schema,cn=config&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="Create-the-self-signed-certificate"><a href="#Create-the-self-signed-certificate" class="headerlink" title="Create the self-signed certificate"></a>Create the self-signed certificate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -nodes -out /etc/pki/tls/certs/opentelnetldap.pem -keyout /etc/pki/tls/certs/opentelnetldapkey.pem -days 365</span><br></pre></td></tr></table></figure>
+Okay, write your answer with your pleasure.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Country Name (2 letter code) [XX]:CN</span><br><span class="line">State or Province Name (full name) []:ZheJiang</span><br><span class="line">Locality Name (eg, city) [Default City]: HangZhou</span><br><span class="line">Organization Name (eg, company) [Default Company Ltd]:OpenTelnet</span><br><span class="line">Organization Unit Name (eg,section) []:Manage</span><br><span class="line">Common Name (eg, your name or your server&apos;s hostname) []:opentelnet.com</span><br><span class="line">Email Address []:opentelnet@gmail.com</span><br></pre></td></tr></table></figure>
+<h3 id="Create-base-objects-in-OpenLDAP"><a href="#Create-base-objects-in-OpenLDAP" class="headerlink" title="Create base objects in OpenLDAP"></a>Create base objects in OpenLDAP</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/share/migrationtools</span><br><span class="line">vi migrate_common.ph</span><br></pre></td></tr></table></figure>
+Modify migrate_common.ph:</li>
+<li>:71 to the line71<br>$DEFAULT_MAIL_DOMAIN = “padl.com” –&gt; $DEFAULT_MAIL_DOMAIN = “opentelnet.com”</li>
+<li>to the line 74<br>$DEFAULT_BASE = “dc=padl,dc=com” –&gt; $DEFAULT_BASE = “dc=opentelnet,dc=com”</li>
+<li>:90 to the line 90<br>$EXTENDED_SCHEMA = 0; –&gt; $EXTENDED_SCHEMA = 1;<h3 id="Generate-a-base-ldif-file-for-your-Domain"><a href="#Generate-a-base-ldif-file-for-your-Domain" class="headerlink" title="Generate a base.ldif file for your Domain"></a>Generate a base.ldif file for your Domain</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /root/base.ldif</span><br></pre></td></tr></table></figure>
+Modify base.ldif:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">dn: dc=opentelnet,dc=com</span><br><span class="line">objectCLass: top</span><br><span class="line">objectClass: dcObject</span><br><span class="line">objectClass: organization</span><br><span class="line">o: opentelnet com</span><br><span class="line">dc: opentelnet</span><br><span class="line"></span><br><span class="line">dn: cn=Manager,dc=opentelnet,dc=com</span><br><span class="line">objectClass: organizationalRole</span><br><span class="line">cn: Manager</span><br><span class="line">description: Directory Manager</span><br><span class="line"></span><br><span class="line">dn: ou=People,dc=opentelnet,dc=com</span><br><span class="line">objectClass: organizationalUnit</span><br><span class="line">ou: People</span><br><span class="line"></span><br><span class="line">dn: ou=Group,dc=opentelnet,dc=com</span><br><span class="line">objectClass: organizationalUnit</span><br><span class="line">ou: Group</span><br></pre></td></tr></table></figure>
+<h3 id="Create-a-Local-Users"><a href="#Create-a-Local-Users" class="headerlink" title="Create a Local Users"></a>Create a Local Users</h3>Add user1,user2 in Linux.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd user1</span><br><span class="line">useradd user2</span><br></pre></td></tr></table></figure>
+Set password for them.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">passwd user1</span><br><span class="line">passwd user2</span><br></pre></td></tr></table></figure>
+<h3 id="Import-Users-in-to-the-LDAP-Database"><a href="#Import-Users-in-to-the-LDAP-Database" class="headerlink" title="Import Users in to the LDAP Database"></a>Import Users in to the LDAP Database</h3>Save users established just now to file<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;:10[0-9][0-9]&quot; /etc/passwd &gt; /root/passwd</span><br><span class="line">grep &quot;:10[0-9][0-9]&quot; /etc/group &gt; /root/group</span><br></pre></td></tr></table></figure>
+Generate config file.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./migrate_passwd.pl /root/passwd /root/users.ldif</span><br><span class="line">./migrate_passwd.pl /root/group /root/groups.ldif</span><br></pre></td></tr></table></figure>
+Add groups to LDAP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ldapadd -x -W -D &quot;cn=Manager,dc=opentelnet,dc=com&quot; -f /root/base.ldif</span><br><span class="line">Enter LDAP Password:</span><br><span class="line">adding new entry &quot;dc=opentelnet,dc=com&quot;</span><br><span class="line">adding new entry &quot;cn=Manager,dc=opentelnet,dc=com&quot;</span><br><span class="line">adding new entry &quot;cn=People,dc=opentelnet,dc=com&quot;</span><br><span class="line">adding new entry &quot;cn=Group,dc=opentelnet,dc=com&quot;</span><br></pre></td></tr></table></figure>
+Add users to LDAP.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ldapadd -x -W -D &quot;cn=Manager,dc=opentelnet,dc=com&quot; -f /root/users.ldif</span><br><span class="line">ldapadd -x -W -D &quot;cn=Manager,dc=opentelnet,dc=com&quot; -f /root/groups.ldif</span><br></pre></td></tr></table></figure>
+<h3 id="Test-the-configuration"><a href="#Test-the-configuration" class="headerlink" title="Test the configuration"></a>Test the configuration</h3>Test if user1 is added, the same as user2.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ldapsearch -x cn=user1 -b dc=opentelnet,dc=com</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        owner: 'OpenTelnet',
+        repo: 'opentelnet.github.io',
+        oauth: {
+            client_id: '307801f7e502ea1d4915',
+            client_secret: 'c1670bd55fdfa4dc48b8bff55c897e5de7ef8474',
+        },
+    })
+    gitment.render('container')
+</script>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/05/29/ldap-client/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/05/24/docker/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="opentelnet@gmail.com's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        opentelnet@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:opentelnet@gmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">6</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Linux/">Linux<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">hexo<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/movie" title="电影">
+                
+                    <i class="material-icons sidebar-material-icons">movie</i>
+                
+                电影
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/music" title="音乐">
+                
+                    <i class="material-icons sidebar-material-icons">music_note</i>
+                
+                音乐
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/favorites" title="收藏夹">
+                
+                    <i class="material-icons sidebar-material-icons">favorite</i>
+                
+                收藏夹
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">6</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/open_telnet" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+        <a href="https://plus.google.com/114951775686359310545" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/u/6425638114?refer_flag=1001030101_" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/OpenTelnet" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>OpenTelnet
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?wgjW/HuQG9JDgvPDPoRAng==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- Gitment -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
