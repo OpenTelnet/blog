@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            LDAP+TLS的证书认证/LDAP&amp;TLS-Cert | 
+        
+        OpenTelnet
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="This is my homepage.">
+    <meta name="keywords" content=",TLS OpenLDAP Certification Linux">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="OpenTelnet">
+    <meta name="msapplication-starturl" content="http://opentelnet.github.io/2018/05/30/tls-ldap/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="OpenTelnet">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://opentelnet.github.io/2018/05/30/tls-ldap/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="LDAP+TLS的证书认证/LDAP&amp;TLS-Cert | OpenTelnet">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="This is my homepage.">
+    <meta property="og:article:tag" content="TLS OpenLDAP Certification Linux"> 
+
+    
+        <meta property="article:published_time" content="Wed May 30 2018 11:32:07 GMT+0800">
+        <meta property="article:modified_time" content="Wed May 30 2018 14:16:19 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://opentelnet.github.io/2018/05/30/tls-ldap/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://opentelnet.github.io/2018/05/30/tls-ldap/index.html",
+    "headline": "LDAP+TLS的证书认证/LDAP&TLS-Cert",
+    "datePublished": "Wed May 30 2018 11:32:07 GMT+0800",
+    "dateModified": "Wed May 30 2018 14:16:19 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "opentelnet@gmail.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "<a href='https://www.google.com'>广告招租/Advistring lease</a>"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "OpenTelnet",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",TLS OpenLDAP Certification Linux",
+    "description": "This is my homepage.",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+        <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-119673845-1', 'auto');ga('send', 'pageview');
+</script>
+    
+    
+        <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?a1a96b8dea2d211cdd9ec99def25bb1f';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                LDAP+TLS的证书认证/LDAP&TLS-Cert
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>opentelnet@gmail.com</strong>
+        <span>5月 30, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/TLS-OpenLDAP-Certification-Linux/">TLS OpenLDAP Certification Linux</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=LDAP+TLS的证书认证/LDAP&amp;TLS-Cert&url=http://opentelnet.github.io/2018/05/30/tls-ldap/index.html&pic=http://opentelnet.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=LDAP+TLS的证书认证/LDAP&amp;TLS-Cert&url=http://opentelnet.github.io/2018/05/30/tls-ldap/index.html&via=opentelnet@gmail.com" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://opentelnet.github.io/2018/05/30/tls-ldap/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://opentelnet.github.io/2018/05/30/tls-ldap/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://opentelnet.github.io/2018/05/30/tls-ldap/index.html&title=LDAP+TLS的证书认证/LDAP&amp;TLS-Cert" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=OpenTelnet&title=LDAP+TLS的证书认证/LDAP&amp;TLS-Cert&summary=This is my homepage.&pics=http://opentelnet.github.io/img/favicon.png&url=http://opentelnet.github.io/2018/05/30/tls-ldap/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://opentelnet.github.io/2018/05/30/tls-ldap/index.html&text=LDAP+TLS的证书认证/LDAP&amp;TLS-Cert" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote><p>参考自：<a href="http://blog.51cto.com/jerry12356/1853751" target="_blank" rel="noopener">http://blog.51cto.com/jerry12356/1853751</a><br>原文很不错了，这里一点都没有修改并且进行了英文翻译。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br></pre></td><td class="code"><pre><span class="line">为啥要用TLS?</span><br><span class="line"></span><br><span class="line">Openldap默认使用简单验证，对slapd的所有访问都使用明文密码通过未加密通道进行。为了确保信息安全，需要对信息进行加密传输，SSL（Secure Sockets Layer）是一个可靠的解决方案。</span><br><span class="line"></span><br><span class="line">它使用 X.509 证书，由可信任第三方（Certificate Authority (CA)）进行数字签名的一个标准格式的数据。有效的数字签名意味着已签名的数据没有被篡改。如果签名的数据被更改，将不会通过验证</span><br><span class="line"></span><br><span class="line">SSL/TLS 加密原理简介</span><br><span class="line"></span><br><span class="line">SSL/TLS 是基于 PKI 机制的加密方式，包括证书认证、密钥交换、非对称加密、对称加密。SSL/TLS 采用 CA 作为服务端和客户端都信赖的具有权威性的组织，证书的颁发和认证都依赖于 CA，并假定 CA 颁发的证书是可靠的、可信赖的，证书里面的内容是真实的、有效的，并可用于客户机和服务器进行安全的可靠的通信加密。</span><br><span class="line"></span><br><span class="line">SSL/TLS 证书用来认证服务器和客户机双方的身份，并用于密钥交换时候的非对称加密。密钥交换完毕之后，就可以用这个密钥做通信数据的对称加密了，具体的加密算法是由客户机和服务器互相协商得来。服务器和客户机由于 SSL/TLS 库的不同以及用户的配置不同，双方支持的算法列表不完全相同，当双方做 SSL/TLS 握手的时候，就需要将自己支持的算法列表及优先顺序告知对方，一旦对方按照优先顺序找到了第一个支持的算法，那么协商完成，否则双方协商失败，SSL/TLS 连接断开。</span><br><span class="line"></span><br><span class="line">环境说明：</span><br><span class="line"></span><br><span class="line">主机名	角色	IP地址</span><br><span class="line">ldapsrv02.contoso.com	openldap server	192.168.49.139</span><br><span class="line">ldapclient.contoso.com	openldap client + CA	192.168.49.136</span><br><span class="line">ldapsrv02是新添加的一台CentOS 6.5，这里直接使用之前的openldap的安装脚本进行安装，里面并未有任何数据，是一个空的域（域名也是contoso.com，为之后做双机同步做准备）。</span><br><span class="line"></span><br><span class="line">准备工作：</span><br><span class="line"></span><br><span class="line">在两台CentOS上安装openssl.</span><br><span class="line"></span><br><span class="line">yum -y install openssl</span><br><span class="line"></span><br><span class="line">[root@ldapclient ~]# rpm -qa openssl</span><br><span class="line"></span><br><span class="line">openssl-1.0.1e-15.el6.x86_64</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# rpm -qa openssl</span><br><span class="line"></span><br><span class="line">openssl-1.0.1e-15.el6.x86_64</span><br><span class="line"></span><br><span class="line">一、建立CA中心</span><br><span class="line"></span><br><span class="line">1）配置CA签发信息</span><br><span class="line"></span><br><span class="line">cd /etc/pki/CA/</span><br><span class="line"></span><br><span class="line">touch index.txt</span><br><span class="line"></span><br><span class="line">echo 01 &gt;serial</span><br><span class="line"></span><br><span class="line">cp /etc/pki/tls/openssl.cnf /etc/pki/tls/openssl.cnf.bak$(date +%F)</span><br><span class="line"></span><br><span class="line">vi /etc/pki/tls/openssl.cnf</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# diff /etc/pki/tls/openssl.cnf.bak2016-09-18 /etc/pki/tls/openssl.cnf</span><br><span class="line"></span><br><span class="line">50c50</span><br><span class="line"></span><br><span class="line">&lt; certificate	= $dir/cacert.pem 	# The CA certificate</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; certificate	= $dir/CA.crt    	# The CA certificate</span><br><span class="line"></span><br><span class="line">55c55</span><br><span class="line"></span><br><span class="line">&lt; private_key	= $dir/private/cakey.pem# The private key</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; private_key	= $dir/private/CA.key   # The private key</span><br><span class="line"></span><br><span class="line">130c130</span><br><span class="line"></span><br><span class="line">&lt; countryName_default		= XX</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; countryName_default		= CN</span><br><span class="line"></span><br><span class="line">135c135</span><br><span class="line"></span><br><span class="line">&lt; #stateOrProvinceName_default	= Default Province</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; stateOrProvinceName_default	= Guangdong</span><br><span class="line"></span><br><span class="line">138c138</span><br><span class="line"></span><br><span class="line">&lt; localityName_default	= Default City</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; localityName_default	= Shenzhen</span><br><span class="line"></span><br><span class="line">141c141</span><br><span class="line"></span><br><span class="line">&lt; 0.organizationName_default	= Default Company Ltd</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; 0.organizationName_default	= contoso</span><br><span class="line"></span><br><span class="line">148c148</span><br><span class="line"></span><br><span class="line">&lt; #organizationalUnitName_default	=</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; organizationalUnitName_default	= Tech</span><br><span class="line"></span><br><span class="line">2）CA服务器生成自己的私钥</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# (umask 077;openssl genrsa -out private/CA.key)</span><br><span class="line"></span><br><span class="line">Generating RSA private key, 1024 bit long modulus</span><br><span class="line"></span><br><span class="line">...............++++++</span><br><span class="line"></span><br><span class="line">..........++++++</span><br><span class="line"></span><br><span class="line">e is 65537 (0x10001)</span><br><span class="line"></span><br><span class="line">3）CA服务器生成公钥（CA证书）</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# openssl req -new -x509 -key private/CA.key &gt;CA.crt</span><br><span class="line"></span><br><span class="line">You are about to be asked to enter information that will be incorporated</span><br><span class="line"></span><br><span class="line">into your certificate request.</span><br><span class="line"></span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line"></span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line"></span><br><span class="line">For some fields there will be a default value,</span><br><span class="line"></span><br><span class="line">If you enter &apos;.&apos;, the field will be left blank.</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line"></span><br><span class="line">Country Name (2 letter code) [CN]:</span><br><span class="line"></span><br><span class="line">State or Province Name (full name) [Guangdong]:</span><br><span class="line"></span><br><span class="line">Locality Name (eg, city) [Shenzhen]:</span><br><span class="line"></span><br><span class="line">Organization Name (eg, company) [contoso]:</span><br><span class="line"></span><br><span class="line">Organizational Unit Name (eg, section) [Tech]:</span><br><span class="line"></span><br><span class="line">Common Name (eg, your name or your server&apos;s hostname) []:ca.contoso.com</span><br><span class="line"></span><br><span class="line">Email Address []:1217406852@qq.com</span><br><span class="line"></span><br><span class="line">二、openldap server生成私钥及证书请求文件</span><br><span class="line"></span><br><span class="line">1）ldapsrv02生成自己的私钥</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# openssl genrsa -out ldapsrv02.key</span><br><span class="line"></span><br><span class="line">Generating RSA private key, 1024 bit long modulus</span><br><span class="line"></span><br><span class="line">...........................++++++</span><br><span class="line"></span><br><span class="line">.....++++++</span><br><span class="line"></span><br><span class="line">e is 65537 (0x10001)</span><br><span class="line"></span><br><span class="line">2）ldapsrv02生成证书请求文件</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# openssl req -new -key ldapsrv02.key -out ldapsrv02.csr</span><br><span class="line"></span><br><span class="line">You are about to be asked to enter information that will be incorporated</span><br><span class="line"></span><br><span class="line">into your certificate request.</span><br><span class="line"></span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line"></span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line"></span><br><span class="line">For some fields there will be a default value,</span><br><span class="line"></span><br><span class="line">If you enter &apos;.&apos;, the field will be left blank.</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line"></span><br><span class="line">Country Name (2 letter code) [XX]:CN</span><br><span class="line"></span><br><span class="line">State or Province Name (full name) []:Guangdong  </span><br><span class="line"></span><br><span class="line">Locality Name (eg, city) [Default City]:Shenzhen</span><br><span class="line"></span><br><span class="line">Organization Name (eg, company) [Default Company Ltd]:contoso</span><br><span class="line"></span><br><span class="line">Organizational Unit Name (eg, section) []:Tech</span><br><span class="line"></span><br><span class="line">Common Name (eg, your name or your server&apos;s hostname) []:ldapsrv02.contoso.com</span><br><span class="line"></span><br><span class="line">Email Address []:1217406852@qq.com</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Please enter the following &apos;extra&apos; attributes</span><br><span class="line"></span><br><span class="line">to be sent with your certificate request</span><br><span class="line"></span><br><span class="line">A challenge password []:123456</span><br><span class="line"></span><br><span class="line">An optional company name []:123456</span><br><span class="line"></span><br><span class="line">三、CA服务器向openldap server签发证书</span><br><span class="line"></span><br><span class="line">1）ldapsrv02向CA请求证书</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# scp ldapsrv02.csr root@192.168.49.136:/root</span><br><span class="line"></span><br><span class="line">The authenticity of host &apos;192.168.49.136 (192.168.49.136)&apos; can&apos;t be established.</span><br><span class="line"></span><br><span class="line">RSA key fingerprint is f9:ce:14:5d:cd:bb:3c:b4:0d:0b:fc:21:3a:92:43:6b.</span><br><span class="line"></span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line"></span><br><span class="line">Warning: Permanently added &apos;192.168.49.136&apos; (RSA) to the list of known hosts.</span><br><span class="line"></span><br><span class="line">root@192.168.49.136&apos;s password: </span><br><span class="line"></span><br><span class="line">ldapsrv02.csr                                                   100%  777     0.8KB/s   00:00    </span><br><span class="line"></span><br><span class="line">2）CA服务器颁发证书</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# openssl ca -in /root/ldapsrv02.csr -out /root/ldapsrv02.crt</span><br><span class="line"></span><br><span class="line">Using configuration from /etc/pki/tls/openssl.cnf</span><br><span class="line"></span><br><span class="line">Check that the request matches the signature</span><br><span class="line"></span><br><span class="line">Signature ok</span><br><span class="line"></span><br><span class="line">Certificate Details:</span><br><span class="line"></span><br><span class="line">        Serial Number: 1 (0x1)</span><br><span class="line"></span><br><span class="line">        Validity</span><br><span class="line"></span><br><span class="line">            Not Before: Sep 18 08:22:46 2016 GMT</span><br><span class="line"></span><br><span class="line">            Not After : Sep 18 08:22:46 2017 GMT</span><br><span class="line"></span><br><span class="line">        Subject:</span><br><span class="line"></span><br><span class="line">            countryName               = CN</span><br><span class="line"></span><br><span class="line">            stateOrProvinceName       = Guangdong</span><br><span class="line"></span><br><span class="line">            organizationName          = contoso</span><br><span class="line"></span><br><span class="line">            organizationalUnitName    = Tech</span><br><span class="line"></span><br><span class="line">            commonName                = ldapsrv02.contoso.com</span><br><span class="line"></span><br><span class="line">            emailAddress              = 1217406852@qq.com</span><br><span class="line"></span><br><span class="line">        X509v3 extensions:</span><br><span class="line"></span><br><span class="line">            X509v3 Basic Constraints: </span><br><span class="line"></span><br><span class="line">                CA:FALSE</span><br><span class="line"></span><br><span class="line">            Netscape Comment: </span><br><span class="line"></span><br><span class="line">                OpenSSL Generated Certificate</span><br><span class="line"></span><br><span class="line">            X509v3 Subject Key Identifier: </span><br><span class="line"></span><br><span class="line">                39:FB:0E:BD:7D:03:7E:F3:9E:C3:BE:5B:4D:45:8B:63:B7:8B:7F:26</span><br><span class="line"></span><br><span class="line">            X509v3 Authority Key Identifier: </span><br><span class="line"></span><br><span class="line">                keyid:08:FF:94:52:EC:BD:97:12:5B:96:DD:1E:36:08:43:FF:AD:2F:7B:C8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Certificate is to be certified until Sep 18 08:22:46 2017 GMT (365 days)</span><br><span class="line"></span><br><span class="line">Sign the certificate? [y/n]:y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1 out of 1 certificate requests certified, commit? [y/n]y</span><br><span class="line"></span><br><span class="line">Write out database with 1 new entries</span><br><span class="line"></span><br><span class="line">Data Base Updated</span><br><span class="line"></span><br><span class="line">四、openldap server下载并安装证书</span><br><span class="line"></span><br><span class="line">1）ldapsrv02下载证书</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# scp /root/ldapsrv02.crt root@192.168.49.139:/root</span><br><span class="line"></span><br><span class="line">The authenticity of host &apos;192.168.49.139 (192.168.49.139)&apos; can&apos;t be established.</span><br><span class="line"></span><br><span class="line">RSA key fingerprint is 88:23:68:20:34:ef:8b:5c:28:ef:c1:d5:ea:ef:4f:55.</span><br><span class="line"></span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line"></span><br><span class="line">Warning: Permanently added &apos;192.168.49.139&apos; (RSA) to the list of known hosts.</span><br><span class="line"></span><br><span class="line">root@192.168.49.139&apos;s password: </span><br><span class="line"></span><br><span class="line">ldapsrv02.crt                                                   100% 3271     3.2KB/s   00:00     </span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# scp CA.crt ldapsrv02:/etc/openldap/certs/</span><br><span class="line"></span><br><span class="line">The authenticity of host &apos;ldapsrv02 (192.168.49.139)&apos; can&apos;t be established.</span><br><span class="line"></span><br><span class="line">RSA key fingerprint is 88:23:68:20:34:ef:8b:5c:28:ef:c1:d5:ea:ef:4f:55.</span><br><span class="line"></span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line"></span><br><span class="line">Warning: Permanently added &apos;ldapsrv02&apos; (RSA) to the list of known hosts.</span><br><span class="line"></span><br><span class="line">root@ldapsrv02&apos;s password: </span><br><span class="line"></span><br><span class="line">CA.crt                                                          100% 1078     1.1KB/s   00:00    </span><br><span class="line"></span><br><span class="line">2）ldapsrv02安装证书</span><br><span class="line"></span><br><span class="line">mv ldapsrv02.crt /etc/openldap/certs/</span><br><span class="line"></span><br><span class="line">mv ldapsrv02.key /etc/openldap/certs/</span><br><span class="line"></span><br><span class="line">chown -R ldap:ldap /etc/openldap/certs/</span><br><span class="line"></span><br><span class="line">vi /etc/openldap/ldap.conf     #编辑ldap.conf文件</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# tail -3 /etc/openldap/ldap.conf </span><br><span class="line"></span><br><span class="line">URI    ldap://ldapsrv02.contoso.com</span><br><span class="line"></span><br><span class="line">BASE   dc=contoso,dc=com</span><br><span class="line"></span><br><span class="line">TLS_CACERTDIR	/etc/openldap/certs</span><br><span class="line"></span><br><span class="line">vi /etc/openldap/slapd.conf</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# grep TLS /etc/openldap/slapd.conf  #编辑slapd.conf文件，主要是TLS配置</span><br><span class="line"></span><br><span class="line"># The next three lines allow use of TLS for encrypting connections using a</span><br><span class="line"></span><br><span class="line">TLSCACertificatePath /etc/openldap/certs</span><br><span class="line"></span><br><span class="line">TLSCertificateFile /etc/openldap/certs/ldapsrv02.crt</span><br><span class="line"></span><br><span class="line">TLSCertificateKeyFile /etc/openldap/certs/ldapsrv02.key</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# service slapd stop  #关闭slapd服务</span><br><span class="line"></span><br><span class="line">Stopping slapd:                                            [  OK  ]</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# slapd -h &quot;ldap://192.168.49.139/ ldaps://192.168.49.139/&quot;  #重启slapd服务，这里同时监听加密和不加密端口</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# lsof -i :389    #查看不加密的slapd端口389</span><br><span class="line"></span><br><span class="line">COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span><br><span class="line"></span><br><span class="line">slapd   1757 root    7u  IPv4  14100      0t0  TCP *:ldap (LISTEN)</span><br><span class="line"></span><br><span class="line">slapd   1757 root    8u  IPv6  14101      0t0  TCP *:ldap (LISTEN)</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# lsof -i :636    #查看加密的slapd端口636</span><br><span class="line"></span><br><span class="line">COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span><br><span class="line"></span><br><span class="line">slapd   1757 root    9u  IPv4  14104      0t0  TCP *:ldaps (LISTEN)</span><br><span class="line"></span><br><span class="line">slapd   1757 root   10u  IPv6  14105      0t0  TCP *:ldaps (LISTEN)</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# netstat -tunlp|grep slapd  #查看slapd监听的端口</span><br><span class="line"></span><br><span class="line">tcp        0      0 0.0.0.0:636                 0.0.0.0:*                   LISTEN      1757/slapd          </span><br><span class="line"></span><br><span class="line">tcp        0      0 0.0.0.0:389                 0.0.0.0:*                   LISTEN      1757/slapd          </span><br><span class="line"></span><br><span class="line">tcp        0      0 :::636                      :::*                        LISTEN      1757/slapd          </span><br><span class="line"></span><br><span class="line">tcp        0      0 :::389                      :::*                        LISTEN      1757/slapd</span><br><span class="line"></span><br><span class="line">五、ldapclient客户端测试</span><br><span class="line"></span><br><span class="line">1）下载CA公钥</span><br><span class="line"></span><br><span class="line">cp /etc/pki/CA/private/CA.key  /etc/openldap/certs/</span><br><span class="line"></span><br><span class="line">说明：因为我的CA证书中心也同时作为ldap客户端，所以这里只需要拷贝到对应目录即可，如果CA证书中心和ldap客户端不在同一台服务器上，需要使用scp或者rz等其他方式拷贝到ldap客户端上。</span><br><span class="line"></span><br><span class="line">2）修改ldap客户端配置</span><br><span class="line"></span><br><span class="line">cp /etc/openldap/ldap.conf /etc/openldap/ldap.conf.bak$(date +%F)</span><br><span class="line"></span><br><span class="line">vi /etc/openldap/ldap.conf</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# /etc/init.d/nslcd restart</span><br><span class="line"></span><br><span class="line">Stopping nslcd:                                            [  OK  ]</span><br><span class="line"></span><br><span class="line">Starting nslcd:                                            [  OK  ]</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# ldapwhoami -v -x -Z</span><br><span class="line"></span><br><span class="line">ldap_initialize( &lt;DEFAULT&gt; )</span><br><span class="line"></span><br><span class="line">ldap_start_tls: Can&apos;t contact LDAP server (-1)</span><br><span class="line"></span><br><span class="line">	additional info: TLS error -8172:Peer&apos;s certificate issuer has been marked as not trusted by the user.</span><br><span class="line"></span><br><span class="line">ldap_sasl_bind(SIMPLE): Can&apos;t contact LDAP server (-1)</span><br><span class="line"></span><br><span class="line">上述错误的解决方法是：</span><br><span class="line"></span><br><span class="line">        编辑/etc/openldap/ldap.conf，添加““TLS_REQCERT allow”，然后重启nslcd服务即可。</span><br><span class="line"></span><br><span class="line">vi /etc/openldap/ldap.conf</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# egrep -v &quot;#|^$&quot; /etc/openldap/ldap.conf</span><br><span class="line"></span><br><span class="line">TLS_REQCERT  allow</span><br><span class="line"></span><br><span class="line">TLS_CACERTDIR /etc/openldap/certs</span><br><span class="line"></span><br><span class="line">BASE dc=contoso,dc=com</span><br><span class="line"></span><br><span class="line">URI ldaps://ldapsrv02.contoso.com/</span><br><span class="line"></span><br><span class="line">/etc/init.d/nslcd restart</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# ldapwhoami -v -x -Z</span><br><span class="line"></span><br><span class="line">ldap_initialize( &lt;DEFAULT&gt; )</span><br><span class="line"></span><br><span class="line">ldap_start_tls: Operations error (1)</span><br><span class="line"></span><br><span class="line">	additional info: TLS already started</span><br><span class="line"></span><br><span class="line">anonymous</span><br><span class="line"></span><br><span class="line">Result: Success (0)</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# ldapsearch -x -D &quot;cn=admin,dc=contoso,dc=com&quot; -H ldaps://192.168.49.139 -W -b &quot;dc=contoso,dc=com&quot;</span><br><span class="line"></span><br><span class="line">Enter LDAP Password: </span><br><span class="line"></span><br><span class="line"># extended LDIF</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># LDAPv3</span><br><span class="line"></span><br><span class="line"># base &lt;dc=contoso,dc=com&gt; with scope subtree</span><br><span class="line"></span><br><span class="line"># filter: (objectclass=*)</span><br><span class="line"></span><br><span class="line"># requesting: ALL</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># search result</span><br><span class="line"></span><br><span class="line">search: 2</span><br><span class="line"></span><br><span class="line">result: 32 No such object</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># numResponses: 1</span><br><span class="line"></span><br><span class="line">#因为ldapsrv02仅仅是安装了openldap，并没有导入数据，所以这里的查询结果是正确的。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><hr><br><blockquote><p>Reference: <a href="http://blog.51cto.com/jerry12356/1853751" target="_blank" rel="noopener">http://blog.51cto.com/jerry12356/1853751</a><br>It’s the best reference on tls&amp;OpenLDAP and I just translate it.</p>
+</blockquote><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br></pre></td><td class="code"><pre><span class="line">Environment：</span><br><span class="line">Host	Role	IP</span><br><span class="line">ldapsrv02.contoso.com	openldap server	192.168.49.139</span><br><span class="line">ldapclient.contoso.com	openldap client + CA	192.168.49.136</span><br><span class="line"></span><br><span class="line">Preparation：</span><br><span class="line"></span><br><span class="line">Install openssl in both machines.</span><br><span class="line"></span><br><span class="line">yum -y install openssl</span><br><span class="line"></span><br><span class="line">[root@ldapclient ~]# rpm -qa openssl</span><br><span class="line"></span><br><span class="line">openssl-1.0.1e-15.el6.x86_64</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# rpm -qa openssl</span><br><span class="line"></span><br><span class="line">openssl-1.0.1e-15.el6.x86_64</span><br><span class="line"></span><br><span class="line">1.Establish CA sign center.</span><br><span class="line"></span><br><span class="line">1）Config CA sign</span><br><span class="line"></span><br><span class="line">cd /etc/pki/CA/</span><br><span class="line"></span><br><span class="line">touch index.txt</span><br><span class="line"></span><br><span class="line">echo 01 &gt;serial</span><br><span class="line"></span><br><span class="line">cp /etc/pki/tls/openssl.cnf /etc/pki/tls/openssl.cnf.bak$(date +%F)</span><br><span class="line"></span><br><span class="line">vi /etc/pki/tls/openssl.cnf</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# diff /etc/pki/tls/openssl.cnf.bak2016-09-18 /etc/pki/tls/openssl.cnf</span><br><span class="line"></span><br><span class="line">50c50</span><br><span class="line"></span><br><span class="line">&lt; certificate	= $dir/cacert.pem 	# The CA certificate</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; certificate	= $dir/CA.crt    	# The CA certificate</span><br><span class="line"></span><br><span class="line">55c55</span><br><span class="line"></span><br><span class="line">&lt; private_key	= $dir/private/cakey.pem# The private key</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; private_key	= $dir/private/CA.key   # The private key</span><br><span class="line"></span><br><span class="line">130c130</span><br><span class="line"></span><br><span class="line">&lt; countryName_default		= XX</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; countryName_default		= CN</span><br><span class="line"></span><br><span class="line">135c135</span><br><span class="line"></span><br><span class="line">&lt; #stateOrProvinceName_default	= Default Province</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; stateOrProvinceName_default	= Guangdong</span><br><span class="line"></span><br><span class="line">138c138</span><br><span class="line"></span><br><span class="line">&lt; localityName_default	= Default City</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; localityName_default	= Shenzhen</span><br><span class="line"></span><br><span class="line">141c141</span><br><span class="line"></span><br><span class="line">&lt; 0.organizationName_default	= Default Company Ltd</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; 0.organizationName_default	= contoso</span><br><span class="line"></span><br><span class="line">148c148</span><br><span class="line"></span><br><span class="line">&lt; #organizationalUnitName_default	=</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&gt; organizationalUnitName_default	= Tech</span><br><span class="line"></span><br><span class="line">2）CA server generate its private key.</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# (umask 077;openssl genrsa -out private/CA.key)</span><br><span class="line"></span><br><span class="line">Generating RSA private key, 1024 bit long modulus</span><br><span class="line"></span><br><span class="line">...............++++++</span><br><span class="line"></span><br><span class="line">..........++++++</span><br><span class="line"></span><br><span class="line">e is 65537 (0x10001)</span><br><span class="line"></span><br><span class="line">3）CA server generate its public key (CA cert）</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# openssl req -new -x509 -key private/CA.key &gt;CA.crt</span><br><span class="line"></span><br><span class="line">You are about to be asked to enter information that will be incorporated</span><br><span class="line"></span><br><span class="line">into your certificate request.</span><br><span class="line"></span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line"></span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line"></span><br><span class="line">For some fields there will be a default value,</span><br><span class="line"></span><br><span class="line">If you enter &apos;.&apos;, the field will be left blank.</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line"></span><br><span class="line">Country Name (2 letter code) [CN]:</span><br><span class="line"></span><br><span class="line">State or Province Name (full name) [Guangdong]:</span><br><span class="line"></span><br><span class="line">Locality Name (eg, city) [Shenzhen]:</span><br><span class="line"></span><br><span class="line">Organization Name (eg, company) [contoso]:</span><br><span class="line"></span><br><span class="line">Organizational Unit Name (eg, section) [Tech]:</span><br><span class="line"></span><br><span class="line">Common Name (eg, your name or your server&apos;s hostname) []:ca.contoso.com</span><br><span class="line"></span><br><span class="line">Email Address []:1217406852@qq.com</span><br><span class="line"></span><br><span class="line">2.openldap server generate private key and cert request fi</span><br><span class="line"></span><br><span class="line">1）ldapsrv02 generate its private key</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# openssl genrsa -out ldapsrv02.key</span><br><span class="line"></span><br><span class="line">Generating RSA private key, 1024 bit long modulus</span><br><span class="line"></span><br><span class="line">...........................++++++</span><br><span class="line"></span><br><span class="line">.....++++++</span><br><span class="line"></span><br><span class="line">e is 65537 (0x10001)</span><br><span class="line"></span><br><span class="line">2）ldapsrv02 generate its private key</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# openssl req -new -key ldapsrv02.key -out ldapsrv02.csr</span><br><span class="line"></span><br><span class="line">You are about to be asked to enter information that will be incorporated</span><br><span class="line"></span><br><span class="line">into your certificate request.</span><br><span class="line"></span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line"></span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line"></span><br><span class="line">For some fields there will be a default value,</span><br><span class="line"></span><br><span class="line">If you enter &apos;.&apos;, the field will be left blank.</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line"></span><br><span class="line">Country Name (2 letter code) [XX]:CN</span><br><span class="line"></span><br><span class="line">State or Province Name (full name) []:Guangdong  </span><br><span class="line"></span><br><span class="line">Locality Name (eg, city) [Default City]:Shenzhen</span><br><span class="line"></span><br><span class="line">Organization Name (eg, company) [Default Company Ltd]:contoso</span><br><span class="line"></span><br><span class="line">Organizational Unit Name (eg, section) []:Tech</span><br><span class="line"></span><br><span class="line">Common Name (eg, your name or your server&apos;s hostname) []:ldapsrv02.contoso.com</span><br><span class="line"></span><br><span class="line">Email Address []:1217406852@qq.com</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Please enter the following &apos;extra&apos; attributes</span><br><span class="line"></span><br><span class="line">to be sent with your certificate request</span><br><span class="line"></span><br><span class="line">A challenge password []:123456</span><br><span class="line"></span><br><span class="line">An optional company name []:123456</span><br><span class="line"></span><br><span class="line">3.CA服务器向openldap server签发证书</span><br><span class="line"></span><br><span class="line">1）ldapsrv02 ask CA for cert</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# scp ldapsrv02.csr root@192.168.49.136:/root</span><br><span class="line"></span><br><span class="line">The authenticity of host &apos;192.168.49.136 (192.168.49.136)&apos; can&apos;t be established.</span><br><span class="line"></span><br><span class="line">RSA key fingerprint is f9:ce:14:5d:cd:bb:3c:b4:0d:0b:fc:21:3a:92:43:6b.</span><br><span class="line"></span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line"></span><br><span class="line">Warning: Permanently added &apos;192.168.49.136&apos; (RSA) to the list of known hosts.</span><br><span class="line"></span><br><span class="line">root@192.168.49.136&apos;s password: </span><br><span class="line"></span><br><span class="line">ldapsrv02.csr                                                   100%  777     0.8KB/s   00:00    </span><br><span class="line"></span><br><span class="line">2）CA server sign the cert</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# openssl ca -in /root/ldapsrv02.csr -out /root/ldapsrv02.crt</span><br><span class="line"></span><br><span class="line">Using configuration from /etc/pki/tls/openssl.cnf</span><br><span class="line"></span><br><span class="line">Check that the request matches the signature</span><br><span class="line"></span><br><span class="line">Signature ok</span><br><span class="line"></span><br><span class="line">Certificate Details:</span><br><span class="line"></span><br><span class="line">        Serial Number: 1 (0x1)</span><br><span class="line"></span><br><span class="line">        Validity</span><br><span class="line"></span><br><span class="line">            Not Before: Sep 18 08:22:46 2016 GMT</span><br><span class="line"></span><br><span class="line">            Not After : Sep 18 08:22:46 2017 GMT</span><br><span class="line"></span><br><span class="line">        Subject:</span><br><span class="line"></span><br><span class="line">            countryName               = CN</span><br><span class="line"></span><br><span class="line">            stateOrProvinceName       = Guangdong</span><br><span class="line"></span><br><span class="line">            organizationName          = contoso</span><br><span class="line"></span><br><span class="line">            organizationalUnitName    = Tech</span><br><span class="line"></span><br><span class="line">            commonName                = ldapsrv02.contoso.com</span><br><span class="line"></span><br><span class="line">            emailAddress              = 1217406852@qq.com</span><br><span class="line"></span><br><span class="line">        X509v3 extensions:</span><br><span class="line"></span><br><span class="line">            X509v3 Basic Constraints: </span><br><span class="line"></span><br><span class="line">                CA:FALSE</span><br><span class="line"></span><br><span class="line">            Netscape Comment: </span><br><span class="line"></span><br><span class="line">                OpenSSL Generated Certificate</span><br><span class="line"></span><br><span class="line">            X509v3 Subject Key Identifier: </span><br><span class="line"></span><br><span class="line">                39:FB:0E:BD:7D:03:7E:F3:9E:C3:BE:5B:4D:45:8B:63:B7:8B:7F:26</span><br><span class="line"></span><br><span class="line">            X509v3 Authority Key Identifier: </span><br><span class="line"></span><br><span class="line">                keyid:08:FF:94:52:EC:BD:97:12:5B:96:DD:1E:36:08:43:FF:AD:2F:7B:C8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Certificate is to be certified until Sep 18 08:22:46 2017 GMT (365 days)</span><br><span class="line"></span><br><span class="line">Sign the certificate? [y/n]:y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1 out of 1 certificate requests certified, commit? [y/n]y</span><br><span class="line"></span><br><span class="line">Write out database with 1 new entries</span><br><span class="line"></span><br><span class="line">Data Base Updated</span><br><span class="line"></span><br><span class="line">4.openldap server download and install cert</span><br><span class="line"></span><br><span class="line">1）ldapsrv02 download cert.</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# scp /root/ldapsrv02.crt root@192.168.49.139:/root</span><br><span class="line"></span><br><span class="line">The authenticity of host &apos;192.168.49.139 (192.168.49.139)&apos; can&apos;t be established.</span><br><span class="line"></span><br><span class="line">RSA key fingerprint is 88:23:68:20:34:ef:8b:5c:28:ef:c1:d5:ea:ef:4f:55.</span><br><span class="line"></span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line"></span><br><span class="line">Warning: Permanently added &apos;192.168.49.139&apos; (RSA) to the list of known hosts.</span><br><span class="line"></span><br><span class="line">root@192.168.49.139&apos;s password: </span><br><span class="line"></span><br><span class="line">ldapsrv02.crt                                                   100% 3271     3.2KB/s   00:00     </span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# scp CA.crt ldapsrv02:/etc/openldap/certs/</span><br><span class="line"></span><br><span class="line">The authenticity of host &apos;ldapsrv02 (192.168.49.139)&apos; can&apos;t be established.</span><br><span class="line"></span><br><span class="line">RSA key fingerprint is 88:23:68:20:34:ef:8b:5c:28:ef:c1:d5:ea:ef:4f:55.</span><br><span class="line"></span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line"></span><br><span class="line">Warning: Permanently added &apos;ldapsrv02&apos; (RSA) to the list of known hosts.</span><br><span class="line"></span><br><span class="line">root@ldapsrv02&apos;s password: </span><br><span class="line"></span><br><span class="line">CA.crt                                                          100% 1078     1.1KB/s   00:00    </span><br><span class="line"></span><br><span class="line">2）ldapsrv02 install cert.</span><br><span class="line"></span><br><span class="line">mv ldapsrv02.crt /etc/openldap/certs/</span><br><span class="line"></span><br><span class="line">mv ldapsrv02.key /etc/openldap/certs/</span><br><span class="line"></span><br><span class="line">chown -R ldap:ldap /etc/openldap/certs/</span><br><span class="line"></span><br><span class="line">vi /etc/openldap/ldap.conf     #edit ldap.conf文件</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# tail -3 /etc/openldap/ldap.conf </span><br><span class="line"></span><br><span class="line">URI    ldap://ldapsrv02.contoso.com</span><br><span class="line"></span><br><span class="line">BASE   dc=contoso,dc=com</span><br><span class="line"></span><br><span class="line">TLS_CACERTDIR	/etc/openldap/certs</span><br><span class="line"></span><br><span class="line">vi /etc/openldap/slapd.conf</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# grep TLS /etc/openldap/slapd.conf  #edit slapd.conf</span><br><span class="line"></span><br><span class="line"># The next three lines allow use of TLS for encrypting connections using a</span><br><span class="line"></span><br><span class="line">TLSCACertificatePath /etc/openldap/certs</span><br><span class="line"></span><br><span class="line">TLSCertificateFile /etc/openldap/certs/ldapsrv02.crt</span><br><span class="line"></span><br><span class="line">TLSCertificateKeyFile /etc/openldap/certs/ldapsrv02.key</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# service slapd stop  #stop slapd</span><br><span class="line"></span><br><span class="line">Stopping slapd:                                            [  OK  ]</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# slapd -h &quot;ldap://192.168.49.139/ ldaps://192.168.49.139/&quot;  #restart slapd</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# lsof -i :389    </span><br><span class="line"></span><br><span class="line">COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span><br><span class="line"></span><br><span class="line">slapd   1757 root    7u  IPv4  14100      0t0  TCP *:ldap (LISTEN)</span><br><span class="line"></span><br><span class="line">slapd   1757 root    8u  IPv6  14101      0t0  TCP *:ldap (LISTEN)</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# lsof -i :636    </span><br><span class="line"></span><br><span class="line">COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span><br><span class="line"></span><br><span class="line">slapd   1757 root    9u  IPv4  14104      0t0  TCP *:ldaps (LISTEN)</span><br><span class="line"></span><br><span class="line">slapd   1757 root   10u  IPv6  14105      0t0  TCP *:ldaps (LISTEN)</span><br><span class="line"></span><br><span class="line">[root@ldapsrv02 ~]# netstat -tunlp|grep slapd  </span><br><span class="line"></span><br><span class="line">tcp        0      0 0.0.0.0:636                 0.0.0.0:*                   LISTEN      1757/slapd          </span><br><span class="line"></span><br><span class="line">tcp        0      0 0.0.0.0:389                 0.0.0.0:*                   LISTEN      1757/slapd          </span><br><span class="line"></span><br><span class="line">tcp        0      0 :::636                      :::*                        LISTEN      1757/slapd          </span><br><span class="line"></span><br><span class="line">tcp        0      0 :::389                      :::*                        LISTEN      1757/slapd</span><br><span class="line"></span><br><span class="line">5、ldapclient client test</span><br><span class="line"></span><br><span class="line">1)download CA private key</span><br><span class="line"></span><br><span class="line">cp /etc/pki/CA/private/CA.key  /etc/openldap/certs/</span><br><span class="line"></span><br><span class="line">2）Modify ldap client conf</span><br><span class="line"></span><br><span class="line">cp /etc/openldap/ldap.conf /etc/openldap/ldap.conf.bak$(date +%F)</span><br><span class="line"></span><br><span class="line">vi /etc/openldap/ldap.conf</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# /etc/init.d/nslcd restart</span><br><span class="line"></span><br><span class="line">Stopping nslcd:                                            [  OK  ]</span><br><span class="line"></span><br><span class="line">Starting nslcd:                                            [  OK  ]</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# ldapwhoami -v -x -Z</span><br><span class="line"></span><br><span class="line">ldap_initialize( &lt;DEFAULT&gt; )</span><br><span class="line"></span><br><span class="line">ldap_start_tls: Can&apos;t contact LDAP server (-1)</span><br><span class="line"></span><br><span class="line">	additional info: TLS error -8172:Peer&apos;s certificate issuer has been marked as not trusted by the user.</span><br><span class="line"></span><br><span class="line">ldap_sasl_bind(SIMPLE): Can&apos;t contact LDAP server (-1)</span><br><span class="line"></span><br><span class="line">We can do it to save it：</span><br><span class="line"></span><br><span class="line">        Edit /etc/openldap/ldap.conf，add““TLS_REQCERT allow” and restart nslcd.</span><br><span class="line"></span><br><span class="line">vi /etc/openldap/ldap.conf</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# egrep -v &quot;#|^$&quot; /etc/openldap/ldap.conf</span><br><span class="line"></span><br><span class="line">TLS_REQCERT  allow</span><br><span class="line"></span><br><span class="line">TLS_CACERTDIR /etc/openldap/certs</span><br><span class="line"></span><br><span class="line">BASE dc=contoso,dc=com</span><br><span class="line"></span><br><span class="line">URI ldaps://ldapsrv02.contoso.com/</span><br><span class="line"></span><br><span class="line">/etc/init.d/nslcd restart</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# ldapwhoami -v -x -Z</span><br><span class="line"></span><br><span class="line">ldap_initialize( &lt;DEFAULT&gt; )</span><br><span class="line"></span><br><span class="line">ldap_start_tls: Operations error (1)</span><br><span class="line"></span><br><span class="line">	additional info: TLS already started</span><br><span class="line"></span><br><span class="line">anonymous</span><br><span class="line"></span><br><span class="line">Result: Success (0)</span><br><span class="line"></span><br><span class="line">[root@ldapclient CA]# ldapsearch -x -D &quot;cn=admin,dc=contoso,dc=com&quot; -H ldaps://192.168.49.139 -W -b &quot;dc=contoso,dc=com&quot;</span><br><span class="line"></span><br><span class="line">Enter LDAP Password: </span><br><span class="line"></span><br><span class="line"># extended LDIF</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># LDAPv3</span><br><span class="line"></span><br><span class="line"># base &lt;dc=contoso,dc=com&gt; with scope subtree</span><br><span class="line"></span><br><span class="line"># filter: (objectclass=*)</span><br><span class="line"></span><br><span class="line"># requesting: ALL</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># search result</span><br><span class="line"></span><br><span class="line">search: 2</span><br><span class="line"></span><br><span class="line">result: 32 No such object</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># numResponses: 1</span><br><span class="line"></span><br><span class="line">#It&apos;s right because there&apos;s no data here. You can add them by yourself.</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        owner: 'OpenTelnet',
+        repo: 'opentelnet.github.io',
+        oauth: {
+            client_id: '307801f7e502ea1d4915',
+            client_secret: 'c1670bd55fdfa4dc48b8bff55c897e5de7ef8474',
+        },
+    })
+    gitment.render('container')
+</script>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/05/30/ldap-php/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/05/30/centosUI/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="opentelnet@gmail.com's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        opentelnet@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:opentelnet@gmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">8</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Linux/">Linux<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">hexo<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/movie" title="电影">
+                
+                    <i class="material-icons sidebar-material-icons">movie</i>
+                
+                电影
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/music" title="音乐">
+                
+                    <i class="material-icons sidebar-material-icons">music_note</i>
+                
+                音乐
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/favorites" title="收藏夹">
+                
+                    <i class="material-icons sidebar-material-icons">favorite</i>
+                
+                收藏夹
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">8</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/open_telnet" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+        <a href="https://plus.google.com/114951775686359310545" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/u/6425638114?refer_flag=1001030101_" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/OpenTelnet" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>OpenTelnet
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?wgjW/HuQG9JDgvPDPoRAng==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- Gitment -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
